@@ -1,0 +1,97 @@
+/* Home.module.css */
+.pixelate {
+font-size: 1.88rem;
+font-weight: bold;
+animation: pixelate 1s steps(5) infinite;
+}
+
+@media only screen and (max-width: 768px) {
+.pixelate {
+    font-size: 1.2rem;
+}
+}
+
+@keyframes pixelate {
+0%, 100% {
+    filter: none;
+    color: #000; /* Màu chữ mặc định */
+}
+25% {
+    filter: contrast(200%) brightness(150%) saturate(200%);
+    color: #f2a65a; /* Màu chữ thay đổi */
+}
+50% {
+    filter: contrast(200%) brightness(150%) saturate(200%);
+    color: #f76c6c; /* Màu chữ thay đổi */
+}
+75% {
+    filter: contrast(200%) brightness(150%) saturate(200%);
+    color: #a1c4fd; /* Màu chữ thay đổi */
+}
+}
+.textEffectContainer {
+width: 100%;
+margin-top: 20px;
+display: flex;
+justify-content: center;
+overflow: hidden;
+}
+
+.textEffect {
+    font-size: 1.5rem;
+    animation: scrollUp 20s linear infinite;
+  }
+  
+  @keyframes scrollUp {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    5% {
+      opacity: 1;
+    }
+    95% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
+
+  .nes-pokeball {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: movePokeball 3s linear infinite;
+  }
+  
+  @keyframes movePokeball {
+    0% {
+      transform: translate(-50%, -50%);
+    }
+    50% {
+      transform: translate(50%, -50%);
+    }
+    100% {
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  @keyframes throwPokeball {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-50%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .throw-pokeball {
+    animation: throwPokeball 0.5s ease-in-out;
+  }
+  
