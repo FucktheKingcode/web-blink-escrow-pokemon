@@ -57,7 +57,7 @@ const EscrowCard: React.FC<Props> = ({ data }) => {
     getMintInfo(data.account.mintB).then((info) => {
       setMintBInfo(info);
     });
-  }, []);
+  }, [data.account.mintB, getMintInfo]); // Include dependencies here
 
   const [randomPokemon, setRandomPokemon] = useState<string>('nes-bulbasaur');
 
@@ -86,33 +86,21 @@ const EscrowCard: React.FC<Props> = ({ data }) => {
     };
   }, []);
 
-  // const vaultAccount = useMemo(() => {
-  //   return getAssociatedTokenAddressSync(
-  //     data.account.mintA,
-  //     data.publicKey,
-  //     true,
-  //     tokenProgram
-  //   );
-  // }, [data.account.mintA, data.publicKey]);
-
-  // const { data: tokenBalance } = useTokenBalance(vaultAccount);
-
   return (
     <Card className="group cursor-pointer escrow-card">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <div className="flex flex-col">
-          <div className="flex items-center gap-1">
-            <RefreshCcw className="text-primary/70 group-hover:animate-spin" />
-            Escrow
-          </div>
-          <div className="relative">
+            <div className="flex items-center gap-1">
+              <RefreshCcw className="text-primary/70 group-hover:animate-spin" />
+              Escrow
+            </div>
+            <div className="relative">
               <div className="absolute inset-x-0 bottom-0 mb-4">
                 <i className={`nes-ash ${randomPokemon}`}></i>
               </div>
             </div>
           </div>
-          
 
           {publicKey && data.account.maker.equals(publicKey) ? (
             <DropdownMenu>
@@ -162,9 +150,6 @@ const EscrowCard: React.FC<Props> = ({ data }) => {
                 {ellipsify(data.account.maker.toString(), 1)}
               </AvatarFallback>
             </Avatar>
-            {/* <span className="text-primary/70 text-sm">
-              {ellipsify(data.account.maker.toString(), 8)}
-            </span> */}
           </ExplorerLink>
         </div>
         <h2 className="font-semibold">Exchange</h2>
